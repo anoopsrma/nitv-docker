@@ -1,0 +1,65 @@
+networks:
+  frontend:
+    driver: ${NETWORKS_DRIVER}
+  backend:
+    driver: ${NETWORKS_DRIVER}
+volumes:
+  docker-in-docker:
+    driver: ${VOLUMES_DRIVER}
+  prometheus:
+    driver: ${VOLUMES_DRIVER}
+
+include:
+  - path: caddy/compose.yml
+    project_directory: .
+    env_file: caddy/defaults.env
+  - path: certbot/compose.yml
+    project_directory: .
+  - path: clickhouse/compose.yml
+    project_directory: .
+    env_file: clickhouse/defaults.env
+  - path: docker-in-docker/compose.yml
+    project_directory: .
+  - path: docker-registry/compose.yml
+    project_directory: .
+    env_file: docker-registry/defaults.env
+  - path: grafana/compose.yml
+    project_directory: .
+    env_file: grafana/defaults.env
+  - path: jenkins/compose.yml
+    project_directory: .
+    env_file: jenkins/defaults.env
+  - path: redpanda/compose.yml
+    project_directory: .
+  - path: mailhog/compose.yml
+    project_directory: .
+  - path: mysql/compose.yml
+    project_directory: .
+    env_file: mysql/defaults.env
+  - path: nginx/compose.yml
+    project_directory: .
+    env_file: nginx/defaults.env
+  - path: php-fpm/compose.yml
+    project_directory: .
+    env_file: php-fpm/defaults.env
+  - path: php-worker/compose.yml
+    project_directory: .
+    env_file: php-worker/defaults.env
+  - path: phpmyadmin/compose.yml
+    project_directory: .
+    env_file: phpmyadmin/defaults.env
+  - path: prometheus/compose.yml
+    project_directory: .
+    env_file: prometheus/defaults.env
+  - path: redis/compose.yml
+    project_directory: .
+    env_file: redis/defaults.env
+  - path: traefik/compose.yml
+    project_directory: .
+    env_file: traefik/defaults.env
+  - path: workspace/compose.yml
+    project_directory: .
+    env_file: workspace/defaults.env
+  - path: zookeeper/compose.yml
+    project_directory: .
+    env_file: zookeeper/defaults.env
